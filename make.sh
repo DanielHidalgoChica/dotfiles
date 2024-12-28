@@ -12,13 +12,13 @@
 dir=~/dotfiles          # dotfiles dir
 olddir=~/dotfiles_old   # odl dotfiles backup
 
-files="bashrc bash_profile vimrc vim xprofile" # List of files
-                                      	       # to symlink in home
+files="bashrc bash_profile vimrc vim xprofile i3" # List of files
+                                      	          # to symlink in home
 
 # create dotfiles_old in homedir
 
 echo "Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir 
+mkdir -p $olddir
 echo "...done"
 
 # change to the dotfiles dir
@@ -38,7 +38,7 @@ done
 
 
 # Specific one for i3 config
-i3config_folder=~/.config/i3
-i3config_file=config
-
-ln -s $dir/$i3config_file $i3config_folder
+#i3config_folder=~/.config/i3
+#i3config_file=config
+#
+#ln -s $dir/$i3config_file $i3config_folder
