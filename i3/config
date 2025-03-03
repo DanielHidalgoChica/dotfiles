@@ -251,5 +251,5 @@ exec i3-msg "workspace $ws8; exec firefox;\
 # (exec_always) si quiero que se ponga siempre que refresco
 
 exec pulseaudio --start
-exec_always xinput set-prop 9 325 1
+exec_always xinput set-prop "ELAN071A:00 04F3:30FD Touchpad" "libinput Tapping Enabled Default" 1
 
