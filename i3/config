@@ -39,10 +39,18 @@ exec --no-startup-id nm-applet
 # no me sirve, voy a poner lo que dice la descripción
 # del vídeo que me estoy viendo
 set $refresh_i3status killall -SIGUSR1 i3status
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status 
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5%; pkill -SIGRTMIN+10 i3blocks"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5%; pkill -SIGRTMIN+10 i3blocks"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle; pkill -SIGRTMIN+10 i3blocks"
+
+# configuración de i3wm, i3blocks  y 
+# a2dp sink funcionando gracias a la magia 
+# de áurë, latente durante la travesía por el
+# bosque de la frustración y la desesperación
+
+#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -90,7 +98,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+g split h
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -117,21 +125,23 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: Terminal"
-set $ws2 "2: FireFox"
-set $ws3 "3: Uni"
+set $ws1 "1: Work"
+set $ws2 "2: Work"
+set $ws3 "3: Work"
 set $ws4 "4"
-set $ws5 "5: GPT"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8: Music"
-set $ws9 "9: WhatsApp"
+set $ws5 "5"
+set $ws6 "6: COMM"
+set $ws7 "7: Music"
+set $ws8 "8: FireFox"
+set $ws9 "9: FireFox"
 set $ws10 "10: TODO"
 
 # Asignaciones de aplicaciones
 # a workspaces
 
-assign [class="whatsapp-electron"] $ws9
+assign [class="whatsapp-electron"] $ws6
+assign [class="thunderbird-esr"] $ws10
+
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -201,9 +211,9 @@ bar {
 bindsym $mod+shift+x exec i3lock --color 2f343f
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%; pkill -SIGRTMIN+10 i3blocks"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -5%; pkill -SIGRTMIN+10 i3blocks"
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+#bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%; pkill -SIGRTMIN+10 i3blocks"
+#bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -5%; pkill -SIGRTMIN+10 i3blocks"
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
@@ -221,24 +231,30 @@ bindsym XF86AudioPrev exec playerctl previous
 # screenshot (saves to clipboard and a file in ~/screenshots)
 # key: PrtSc
 bindsym Print exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && maim --format png --select > ~/screenshots/screenshot_$NOW.png && xclip -selection clip -t image/png ~/screenshots/screenshot_$NOW.png
+bindsym $mod+Shift+p exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && maim --format png > ~/screenshots/screenshot_$NOW.png && xclip -selection clip -t image/png ~/screenshots/screenshot_$NOW.png
+
+
+for_window [class="^.*"] border pixel 3 # quitar titulos de ventanas
+
+
+#  Para gestionar monitores
+set $fm eDP
+set $sm HDMI-A-0
+\
 
 
 # Para que se me abran las cosas que quiero en cada terminal al abrir una sesión
 # pero que puedan abrirse en otros workspaces
-# exec --no-startup-id i3-msg "workspace $ws2; exec firefox;"
-# exec --no-startup-id i3-msg "workspace $ws10; exec i3-sensible-terminal -e bash -c \
-# 			    'vim TODO && bash'"
-# exec --no-startup-id i3-msg "workspace $ws3; exec i3-sensible-terminal -e bash -c \
-# 			    'cd /home/daniel/Daniel/University/DGIIM/III/primer_cuatrimestre && bash'"
-# exec --no-startup-id i3-msg "workspace $ws1; exec i3-sensible-terminal"
 
-exec --no-startup-id i3-msg "workspace $ws2; exec firefox;\
+exec i3-msg "workspace $ws8; exec firefox;\
                              workspace $ws10; exec i3-sensible-terminal -e bash -c \
                             'vim TODO && bash';\
-                             workspace $ws3; exec i3-sensible-terminal -e bash -c \
-                            'cd /home/daniel/Daniel/University/DGIIM/III/primer_cuatrimestre && bash';\
-                             workspace $ws1; exec i3-sensible-terminal"
+			     exec thunderbird;\
+                             workspace $ws1; exec i3-sensible-terminal;"
 
 # Comandos que quiero que se ejecuten siempre al empezar la sesión
 # (exec_always) si quiero que se ponga siempre que refresco
+
+exec pulseaudio --start
+exec_always xinput set-prop 9 325 1
 

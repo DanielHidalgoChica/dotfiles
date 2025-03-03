@@ -7,10 +7,12 @@ set hlsearch "Para que highlightee los resultados de las búsquedas
 set mouse=a "Poder gestionar tamaños de ventanas con ratón
 "Siempre busca con very-magic
 nnoremap / /\v
+"Mostrar el comando que se está insertando abajo a la izquierda
+"en la pantalla
+set showcmd
 
 "Mapeo de jk a la tecla Esc en modo insertar
 inoremap jk <ESC>
-inoremap kj <ESC>
 
 
 "Case insensitive al menos que haya alguna con mayúsucla
@@ -30,7 +32,6 @@ set tabstop=8
 set softtabstop=4
 set shiftwidth=4
 set noexpandtab
-"Reemplazar tab's por espacios siempre
 
 filetype on
 filetype indent on "Para que reconozca el tipo
@@ -57,9 +58,10 @@ let mapleader = ","
 map <leader>p :call TogglePaste()<cr>
 "Fin paste toggle
 
-"Mostrar el comando que se está insertando abajo a la izquierda
-"en la pantalla
-set showcmd
+"Map key to delete every swap file (puede haber
+"swap files con otras extensiones, pero espero no acumular tantos)
+map <leader>sw :!find . -type f -maxdepth 1 -name '.%.sw[ponmlkjihgfedcba]'  -delete
+
 
 call plug#begin()
 Plug 'jiangmiao/auto-pairs'
@@ -79,3 +81,6 @@ endif
 
 "Config de netrw
 let g:netrw_liststyle= 3
+
+"Para que funcionen los aliases
+let $BASH_ENV = "~/.bash_aliases"
