@@ -60,6 +60,9 @@ map <leader>p :call TogglePaste()<cr>
 
 "Map key to delete every swap file (puede haber
 "swap files con otras extensiones, pero espero no acumular tantos)
+"RECUERDA que para usar este comando tienes que haber entrado al archivo
+"desde el directorio en el que se encuentra (porque el filename % no va bien
+"con -name en otro caso, creo)
 map <leader>sw :!find . -type f -maxdepth 1 -name '.%.sw[ponmlkjihgfedcba]'  -delete
 
 

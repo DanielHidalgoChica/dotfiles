@@ -118,24 +118,39 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+#  MONITOR CONFIGURATION
+set $fm eDP
+set $sm HDMI-A-0
+
+# WORKSPACE CONFIGURATION
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: Work"
-set $ws2 "2: Work"
-set $ws3 "3: Work"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
 set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6: COMM"
-set $ws7 "7: Music"
+set $ws5 "5: M"
+set $ws6 "6: M"
+set $ws7 "7: M"
 set $ws8 "8: FireFox"
-set $ws9 "9: FireFox"
+set $ws9 "9"
 set $ws10 "10: TODO"
+set $ws11 "11: COMM"
+set $ws12 "12: MUSIC"
 
-# Asignaciones de aplicaciones
-# a workspaces
-
-assign [class="whatsapp-electron"] $ws6
-assign [class="thunderbird-esr"] $ws10
+# Assign ws to monitors
+workspace $ws1 output $fm
+workspace $ws2 output $fm
+workspace $ws3 output $fm
+workspace $ws4 output $fm
+workspace $ws5 output $sm
+workspace $ws6 output $sm
+workspace $ws7 output $sm
+workspace $ws8 output $fm
+workspace $ws9 output $fm
+workspace $ws10 output $fm
+workspace $ws11 output $fm
+workspace $ws12 output $fm
 
 
 # switch to workspace
@@ -149,6 +164,8 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+bindsym $mod+apostrophe workspace number $ws11
+bindsym $mod+exclamdown workspace number $ws12
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -161,6 +178,8 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+apostrophe move container to workspace number $ws11
+bindsym $mod+Shift+exclamdown move container to workspace number $ws12
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -232,10 +251,6 @@ bindsym $mod+Shift+p exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && maim --format png > 
 for_window [class="^.*"] border pixel 3 # quitar titulos de ventanas
 
 
-#  Para gestionar monitores
-set $fm eDP
-set $sm HDMI-A-0
-\
 
 
 # Para que se me abran las cosas que quiero en cada terminal al abrir una sesión
@@ -250,6 +265,7 @@ exec i3-msg "workspace $ws8; exec firefox;\
 # Comandos que quiero que se ejecuten siempre al empezar la sesión
 # (exec_always) si quiero que se ponga siempre que refresco
 
+exec feh --bg-scale ~/Daniel/Personal/images/DSd7rMWW0AAgzl2.jpeg
 exec pulseaudio --start
 exec_always xinput set-prop "ELAN071A:00 04F3:30FD Touchpad" "libinput Tapping Enabled" 1
 
