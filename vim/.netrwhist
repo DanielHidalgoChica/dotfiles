@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =9
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/daniel/dotfiles/i3'
+let g:netrw_dirhist_0='/home/daniel/Daniel/Personal/teorico_coche/estacionamientos'
 let g:netrw_dirhist_9='/home/daniel/Daniel/University/DGIIM/III/segundo_cuatrimestre/IA/practicas/p2'
 let g:netrw_dirhist_8='/home/daniel/Daniel/University/DGIIM/III/segundo_cuatrimestre/ISE/teoria/tema1'
 let g:netrw_dirhist_7='/home/daniel/dotfiles/i3'
@@ -8,5 +10,3 @@ let g:netrw_dirhist_5='/home/daniel/.config/i3blocks/disk'
 let g:netrw_dirhist_4='/home/daniel/dotfiles/i3'
 let g:netrw_dirhist_3='/home/daniel/dotfiles'
 let g:netrw_dirhist_2='/home/daniel/dotfiles/i3'
-let g:netrw_dirhist_1='/etc/bluetooth'
-let g:netrw_dirhist_0='/home/daniel/Daniel/University/DGIIM/III/primer_cuatrimestre/SCD/theory/theory/notas34'
