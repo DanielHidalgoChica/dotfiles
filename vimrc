@@ -25,6 +25,9 @@ syntax on
 "El autoindent me gusta la verdad
 set autoindent
 
+"Uso medio estándar del grep con ripgrep
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+
 " Tamaño en espacios del caracter de tab (opciones
 " recomendadas en vim para tabstop, y
 " softabstop=shiftwidth=num_espacios_por_tab)
@@ -83,7 +86,8 @@ if maparg('<C-K>', 'n') ==# ''
 endif
 
 "Config de netrw
-let g:netrw_liststyle= 3
+let g:netrw_liststyle= 3 " Que el estilo del árbol sea natural, creo
+let g:netrw_banner = 0 " Que no aparezca la ayuda
 
 "Para que funcionen los aliases
 let $BASH_ENV = "~/.bash_aliases"
