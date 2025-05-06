@@ -1,0 +1,19 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[alias]
+	logg = log --all --graph --oneline
+[user]
+	email = daniel5000.dhc@gmail.com
+	name = Daniel Hidalgo Chica
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[diff]
+	tool = vimdiff
+[mergetool]
+	keepBackup = false

@@ -10,6 +10,8 @@ nnoremap / /\v
 "Mostrar el comando que se está insertando abajo a la izquierda
 "en la pantalla
 set showcmd
+"Mostrar la statusline con el flename
+set laststatus=2
 
 "Mapeo de jk a la tecla Esc en modo insertar
 inoremap jk <ESC>
