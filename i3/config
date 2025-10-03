@@ -265,7 +265,7 @@ exec i3-msg "workspace $ws8; exec firefox;\
 # Comandos que quiero que se ejecuten siempre al empezar la sesión
 # (exec_always) si quiero que se ponga siempre que refresco
 
-exec feh --bg-scale ~/Daniel/Personal/images/DSd7rMWW0AAgzl2.jpeg
+exec feh --bg-scale ~/Daniel/Personal/images/cnt_ait.jpeg
 exec pulseaudio --start
 exec_always xinput set-prop "ELAN071A:00 04F3:30FD Touchpad" "libinput Tapping Enabled" 1
 

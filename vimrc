@@ -2,9 +2,11 @@ set encoding=utf-8
 set number "Que salgan los números en las líneas
 set rnu "Relative numbering
 set nocompatible "Evita la compatibilidad con Vi y te quita de problemas
+
 set hidden "Para cambiar de buffer sin guardar
 set hlsearch "Para que highlightee los resultados de las búsquedas
 set mouse=a "Poder gestionar tamaños de ventanas con ratón
+
 "Siempre busca con very-magic
 nnoremap / /\v
 "Mostrar el comando que se está insertando abajo a la izquierda
@@ -38,6 +40,10 @@ set softtabstop=4
 set shiftwidth=4
 set noexpandtab
 
+"Si uso yaml, meter 2 espacios por los tabs
+autocmd FileType yml,yaml setlocal tabstop=8 shiftwidth=2 softtabstop=2 expandtab
+
+
 filetype on
 filetype indent on "Para que reconozca el tipo
 		   "de archivo y ajuste en función
@@ -69,7 +75,6 @@ map <leader>p :call TogglePaste()<cr>
 "desde el directorio en el que se encuentra (porque el filename % no va bien
 "con -name en otro caso, creo)
 map <leader>sw :!find . -type f -maxdepth 1 -name '.%.sw[ponmlkjihgfedcba]'  -delete
-
 
 call plug#begin()
 Plug 'jiangmiao/auto-pairs'
