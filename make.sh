@@ -12,8 +12,9 @@
 dir=~/dotfiles          # dotfiles dir
 olddir=~/dotfiles_old   # odl dotfiles backup
 
-files="bashrc bash_profile bash_aliases vimrc vim xprofile i3 gitconfig" # List of files
-                                      	          # to symlink in home
+# List of files to symlink in home
+files="bashrc bash_profile bash_aliases vimrc vim xprofile i3 gitconfig editorconfig"
+
 
 # create dotfiles_old in homedir
 

@@ -115,6 +115,6 @@ Plug 'KeitaNakamura/tex-conceal.vim'
     let g:tex_conceal='abdmg'
     hi Conceal ctermbg=none
 
-setlocal spell
-set spelllang=es,en_us
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+"setlocal spell
+"set spelllang=es,en_us
+"inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u

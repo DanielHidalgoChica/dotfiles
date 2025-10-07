@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/daniel/dotfiles'
 let g:netrw_dirhist_3='/home/daniel/dotfiles/vim/plugged/vim-peekaboo'
 let g:netrw_dirhist_2='/home/daniel/Daniel/University/DGIIM/III/segundo_cuatrimestre/IA/practicas/p3/practica3IA/src/personal'
 let g:netrw_dirhist_1='/home/daniel/Daniel/University/DGIIM/III/segundo_cuatrimestre/IA/practicas/p3/practica3IA/src'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_8='/home/daniel/Daniel/University/DGIIM/III/segundo_cuatrime
 let g:netrw_dirhist_7='/home/daniel/Daniel/University/DGIIM/III/segundo_cuatrimestre/IA/practicas/p3/practica3IA'
 let g:netrw_dirhist_6='/home/daniel/Daniel/University/DGIIM/III/segundo_cuatrimestre/IA/practicas/p3/practica3IA/src/personal'
 let g:netrw_dirhist_5='/home/daniel/Daniel/University/DGIIM/III/segundo_cuatrimestre/IA/practicas/p3/practica3IA/src'
-let g:netrw_dirhist_4='/home/daniel/Daniel/University/DGIIM/III/segundo_cuatrimestre/IA/practicas/p3/practica3IA'
