@@ -36,12 +36,19 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 " recomendadas en vim para tabstop, y
 " softabstop=shiftwidth=num_espacios_por_tab)
 set tabstop=8
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=0
+set shiftwidth=0
 set noexpandtab
 
-"Si uso yaml, meter 2 espacios por los tabs
-autocmd FileType yml,yaml setlocal tabstop=8 shiftwidth=2 softtabstop=2 expandtab
+"Para que los archivos sin extensión tengan softtabstop 4
+" EL ROLLO: Todos los archivos sin extensión (texto normal) tabs de 8
+" y softtabstop de 4. De entrada, los archivos CON extensión, softtabstop y
+" shiftwidth de 8. Luego para cosas concretas, metemos editorconfig. Además,
+" los Makefiles intento EditorConfig
+augroup NoExtSTS
+	autocmd!
+	autocmd BufRead,BufNewFile * if empty(expand('%:e')) | setlocal softtabstop=4 | endif
+augroup END
 
 
 filetype on

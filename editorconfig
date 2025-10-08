@@ -1,12 +1,35 @@
-root = true
-
+# # Los predeterminados?Deciertamanera?
 [*]
-end_of_line = lf
+end_of_line  = lf
+charset      = utf-8
 insert_final_newline = true
-charset = utf-8
 trim_trailing_whitespace = true
 
-[Makefile,README,*.cpp,*.l, *.gd]
+
+[Makefile]
 indent_style = tab
-indent_size = 4
-max_line_length = 79
+indent_size  = tab
+tab_width    = 8
+
+[makefile]
+indent_style = tab
+indent_size  = tab
+tab_width    = 8
+
+[GNUmakefile]
+indent_style = tab
+indent_size  = tab
+tab_width    = 8
+
+[*.yml]
+indent_style = space
+indent_size  = 2
+# Opcional: cómo mostrar tabs literales si existieran
+tab_width    = 8
+
+[*.yaml]
+indent_style = space
+indent_size  = 2
+# Opcional
+tab_width    = 8
+
