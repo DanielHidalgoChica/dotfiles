@@ -7,8 +7,6 @@ set hidden "Para cambiar de buffer sin guardar
 set hlsearch "Para que highlightee los resultados de las búsquedas
 set mouse=a "Poder gestionar tamaños de ventanas con ratón
 
-"Siempre busca con very-magic
-nnoremap / /\v
 "Mostrar el comando que se está insertando abajo a la izquierda
 "en la pantalla
 set showcmd
