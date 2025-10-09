@@ -84,6 +84,7 @@ map <leader>sw :!find . -type f -maxdepth 1 -name '.%.sw[ponmlkjihgfedcba]'  -de
 call plug#begin()
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo' "Lo de las macros
+Plug 'SirVer/ultisnips' "Snippets
 call plug#end()
 
 "Colores, esquema en .vim/colors
@@ -109,6 +110,7 @@ Plug 'sirver/ultisnips'
     let g:UltiSnipsExpandTrigger = '<tab>'
     let g:UltiSnipsJumpForwardTrigger = '<tab>'
     let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+    let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
 Plug 'lervag/vimtex'
     let g:tex_flavor='latex'
