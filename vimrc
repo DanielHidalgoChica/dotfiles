@@ -87,6 +87,12 @@ map <leader>p :call TogglePaste()<cr>
 "con -name en otro caso, creo)
 map <leader>sw :!find . -type f -maxdepth 1 -name '.%.sw[ponmlkjihgfedcba]'  -delete
 
+"Configuraciones para el visualizador de pdf con latex
+if empty(v:servername) && exists('*remote_startserver')
+    call remote_startserver('VIM')
+endif
+
+
 call plug#begin()
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo' "Lo de las macros
@@ -97,9 +103,6 @@ call plug#end()
 "Colores, esquema en .vim/colors
 set termguicolors
 colorscheme true-monochrome
-"colores para el conceal group del vimtex
-set conceallevel=2
-"autocmd ColorScheme * hi! Conceal guifg=#A0A0A0 guibg=#111111 ctermfg=grey ctermbg=black
 
 
 
@@ -123,28 +126,14 @@ Plug 'sirver/ultisnips'
     let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
 
-    Plug 'lervag/vimtex', {'tag': 'v1.6'}
-    let g:tex_flavor='latex'
-    let g:vimtex_view_method='zathura'
-    let g:vimtex_quickfix_mode=0
+Plug 'lervag/vimtex', {'tag': 'v1.6'}
 
-    "Para no usar los mappings en insert mode de vimtex
-    let g:vimtex_imaps_enabled = 0
-
-    "keys para compilación
-    noremap <localleader>ll <Cmd>update<CR><Cmd>VimtexCompileSS<CR>
-    noremap <localleader>lc <Cmd>update<CR><Cmd>VimtexCompile<CR>
-    let g:vimtex_quickfix_open_on_warning = 0 "no abrir el quickfix en warnings
-
-    "ignorar ciertos warnings
-
-    Plug 'KeitaNakamura/tex-conceal.vim'
+Plug 'KeitaNakamura/tex-conceal.vim'
     set conceallevel=1
     let g:tex_conceal='abdmg'
     let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
     let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
     let g:tex_conceal_frac=1
-    hi! Conceal guifg=#A0A0A0 guibg=#111111 ctermfg=grey ctermbg=black
 
 "setlocal spell
 "set spelllang=es,en_us
