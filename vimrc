@@ -16,6 +16,12 @@ set laststatus=2
 "Mapeo de jk a la tecla Esc en modo insertar
 inoremap jk <ESC>
 
+"Para copiar directamente al final de la línea
+noremap Y y$
+
+"Para navegar mejor las softwrapped
+noremap j gj
+noremap k gk
 
 "Case insensitive al menos que haya alguna con mayúsucla
 set ignorecase
@@ -85,11 +91,15 @@ call plug#begin()
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo' "Lo de las macros
 Plug 'SirVer/ultisnips' "Snippets
+Plug 'lervag/vimtex' " Pal latexx
 call plug#end()
 
 "Colores, esquema en .vim/colors
 set termguicolors
 colorscheme true-monochrome
+"colores para el conceal group del vimtex
+set conceallevel=2
+"autocmd ColorScheme * hi! Conceal guifg=#A0A0A0 guibg=#111111 ctermfg=grey ctermbg=black
 
 
 
@@ -112,15 +122,29 @@ Plug 'sirver/ultisnips'
     let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
     let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
-Plug 'lervag/vimtex'
+
+    Plug 'lervag/vimtex', {'tag': 'v1.6'}
     let g:tex_flavor='latex'
     let g:vimtex_view_method='zathura'
     let g:vimtex_quickfix_mode=0
 
-Plug 'KeitaNakamura/tex-conceal.vim'
+    "Para no usar los mappings en insert mode de vimtex
+    let g:vimtex_imaps_enabled = 0
+
+    "keys para compilación
+    noremap <localleader>ll <Cmd>update<CR><Cmd>VimtexCompileSS<CR>
+    noremap <localleader>lc <Cmd>update<CR><Cmd>VimtexCompile<CR>
+    let g:vimtex_quickfix_open_on_warning = 0 "no abrir el quickfix en warnings
+
+    "ignorar ciertos warnings
+
+    Plug 'KeitaNakamura/tex-conceal.vim'
     set conceallevel=1
     let g:tex_conceal='abdmg'
-    hi Conceal ctermbg=none
+    let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
+    let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
+    let g:tex_conceal_frac=1
+    hi! Conceal guifg=#A0A0A0 guibg=#111111 ctermfg=grey ctermbg=black
 
 "setlocal spell
 "set spelllang=es,en_us
