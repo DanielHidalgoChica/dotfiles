@@ -11,14 +11,13 @@ def env(name):
 
 endglobal
 
-
 snippet template "Basic template" b
 \documentclass[a4paper]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
-\usepackage[dutch]{babel}
+\usepackage[spanish]{babel}
 \usepackage{amsmath, amssymb}
 
 
@@ -54,11 +53,11 @@ endsnippet
 snippet table "Table environment" b
 \begin{table}[${1:htpb}]
 	\centering
+	\begin{tabular}{${5:c}}
+	$0${5/((?<=.)[c|l|r])|./(?1: & )/g}
+	\end{tabular}
 	\caption{${2:caption}}
 	\label{tab:${3:label}}
-	\begin{tabular}{${5:c}}
-	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
-	\end{tabular}
 \end{table}
 endsnippet
 
@@ -73,20 +72,32 @@ endsnippet
 
 snippet enum "Enumerate" bA
 \begin{enumerate}
-	\item $0
+	\item ${1:${VISUAL}}
+	\item $2
 \end{enumerate}
+endsnippet
+
+snippet it "itemize element" i
+
+\item ${1:${VISUAL}}
 endsnippet
 
 snippet item "Itemize" bA
 \begin{itemize}
-	\item $0
+	\item ${1:${VISUAL}}
+	\item $2
 \end{itemize}
 endsnippet
 
-snippet desc "Description" b
+snippet de "description" b
 \begin{description}
-	\item[$1] $0
+	\item [$1] ${2:${VISUAL}}
+	\item [$3] $4
 \end{description}
+endsnippet
+snippet id "item descrition" i
+
+\item [$1] ${2:${VISUAL}}
 endsnippet
 
 snippet pac "Package" b
@@ -107,7 +118,7 @@ snippet iff "iff" Ai
 endsnippet
 
 snippet mk "Math" wA
-$${1}$`!p
+$${1:${VISUAL}}$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
 	snip.rv = ' '
 else:
@@ -116,15 +127,16 @@ else:
 endsnippet
 
 snippet dm "Math" wA
-\[
-${1:${VISUAL}}
-.\] $0
+\begin{equation*}
+	${1:${VISUAL}}
+\end{equation*}
+$0
 endsnippet
 
 snippet ali "Align" bA
 \begin{align*}
 	${1:${VISUAL}}
-.\end{align*}
+\end{align*}
 endsnippet
 
 
@@ -226,11 +238,6 @@ snippet bmat "bmat" iA
 \begin{bmatrix} $1 \end{bmatrix} $0
 endsnippet
 
-context "math()"
-snippet () "left( right)" iA
-\left( ${1:${VISUAL}} \right) $0
-endsnippet
-
 snippet lr "left( right)" i
 \left( ${1:${VISUAL}} \right) $0
 endsnippet
@@ -243,7 +250,7 @@ snippet lr| "left| right|" i
 \left| ${1:${VISUAL}} \right| $0
 endsnippet
 
-snippet lr{ "left\{ right\}" i
+snippet lr{} "left\{ right\}" i
 \left\\{ ${1:${VISUAL}} \right\\} $0
 endsnippet
 
@@ -255,13 +262,17 @@ snippet lr[ "left[ right]" i
 \left[ ${1:${VISUAL}} \right] $0
 endsnippet
 
+snippet lrs "left[ right]" i
+\left[ ${1:${VISUAL}} \right] $0
+endsnippet
+
 snippet lra "leftangle rightangle" iA
 \left<${1:${VISUAL}} \right>$0
 endsnippet
 
 context "math()"
 snippet conj "conjugate" iA
-\overline{$1}$0
+\overline{${1:${VISUAL}}}$0
 endsnippet
 
 snippet sum "sum" w
@@ -314,7 +325,7 @@ snippet rd "to the ... power" iA
 endsnippet
 
 snippet __ "subscript" iA
-_{$1}$0
+_{${1:${VISUAL}}}$0
 endsnippet
 
 snippet ooo "\infty" iA
@@ -326,7 +337,7 @@ snippet rij "mrij" i
 endsnippet
 
 snippet <= "leq" iA
-\le
+\le $0
 endsnippet
 
 snippet >= "geq" iA
@@ -340,7 +351,7 @@ endsnippet
 
 context "math()"
 snippet AA "forall" iA
-\forall
+\forall $0
 endsnippet
 
 context "math()"
@@ -405,14 +416,9 @@ snippet plot "Plot" w
 \end{figure}
 endsnippet
 
-snippet nn "Tikz node" w
-\node[$5] (${1/[^0-9a-zA-Z]//g}${2}) ${3:at (${4:0,0}) }{$${1}$};
-$0
-endsnippet
-
 context "math()"
 snippet mcal "mathcal" iA
-\mathcal{$1}$0
+\mathcal{${1:${VISUAL}}}$0
 endsnippet
 
 snippet lll "l" iA
@@ -436,7 +442,7 @@ endsnippet
 
 context "math()"
 snippet norm "norm" iA
-\|$1\|$0
+\|{${1:${VISUAL}}}\|$0
 endsnippet
 
 priority 100
@@ -453,7 +459,7 @@ endsnippet
 
 priority 200
 context "math()"
-snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|int)' "ln" rwA
+snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|int|ker)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -461,7 +467,7 @@ endsnippet
 priority 100
 context "math()"
 snippet -> "to" iA
-\to
+\to $0
 endsnippet
 
 priority 200
@@ -505,7 +511,7 @@ endsnippet
 
 context "math()"
 snippet set "set" wA
-\\{$1\\} $0
+\\{${1:${VISUAL}}\\} $0
 endsnippet
 
 snippet || "mid" iA
@@ -515,20 +521,16 @@ endsnippet
 
 context "math()"
 snippet cc "subset" Ai
-\subset
+\subset $0
 endsnippet
 
 snippet notin "not in " iA
-\not\in
+\not\in $0
 endsnippet
 
 context "math()"
-snippet inn "in " iA
-\in
-endsnippet
-
-snippet NN "n" iA
-\N
+snippet inn "in " A
+\in $0
 endsnippet
 
 snippet Nn "cap" iA
@@ -551,17 +553,6 @@ snippet OO "emptyset" iA
 \O
 endsnippet
 
-snippet RR "real" iA
-\R
-endsnippet
-
-snippet QQ "Q" iA
-\Q
-endsnippet
-
-snippet ZZ "Z" iA
-\Z
-endsnippet
 
 snippet <! "normal" iA
 \triangleleft
@@ -578,8 +569,8 @@ _\text{$1} $0
 endsnippet
 
 context "math()"
-snippet tt "text" iA
-\text{$1}$0
+snippet tt "texto" iA
+\text{ ${1:${VISUAL}} }$0
 endsnippet
 
 context "math()"
@@ -607,7 +598,7 @@ endsnippet
 priority 10
 context "math()"
 snippet "bar" "bar" riA
-\overline{$1}$0
+\overline{${1:${VISUAL}}}$0
 endsnippet
 
 priority 100
@@ -619,7 +610,7 @@ endsnippet
 priority 10
 context "math()"
 snippet "hat" "hat" riA
-\hat{$1}$0
+\hat{${1:${VISUAL}}}$0
 endsnippet
 
 priority 100
@@ -641,4 +632,190 @@ snippet DD "D" iA
 \mathbb{D}
 endsnippet
 
+snippet SS "S" iA
+\mathbb{S}
+endsnippet
+
 # vim:ft=snippets
+
+# Dani snippets
+context "math ()"
+snippet circ "composición" iA
+\circ
+endsnippet
+
+priority 10
+context "math()"
+snippet \qu "espacio" iA
+\quad $0
+endsnippet
+
+context "math()"
+snippet \qq "espacio" iA
+\qquad $0
+endsnippet
+
+snippet arr "array"
+\begin{array}{$1}
+	${2:${VISUAL}}
+\end{array}
+endsnippet
+
+context "math()"
+snippet ast "omega" i
+\ast
+endsnippet
+
+context "math()"
+snippet angle "angulos" iA
+\langle $1 \rangle $0
+endsnippet
+
+snippet \e "enfatizar" i
+\emph{${1:${VISUAL}}}$0
+endsnippet
+
+snippet teo "teorema/def" b
+\begin{$1}[$2]
+	${0:${VISUAL}}
+\end{$1}
+endsnippet
+
+snippet noi "noindent"
+\noindent
+endsnippet
+
+# letras
+context "math()"
+snippet delta "delta" A
+\delta
+endsnippet
+
+context "math()"
+snippet sigma "sigma" A
+\sigma
+endsnippet
+
+context "math()"
+snippet epsilon "epsilon" A
+\varepsilon
+endsnippet
+
+context "math()"
+snippet partial "partial" A
+\partial $0
+endsnippet
+
+context "math()"
+snippet phi "phi" iA
+\phi
+endsnippet
+
+#context "math()"
+#snippet alpha "alpha" iA
+#\alpha
+#endsnippet
+context "math()"
+snippet "(?<!\\)\balpha\b" "alpha" rA
+\alpha
+endsnippet
+
+# --- OMEGA (mayúscula)
+context "math()"
+snippet "(?<!\\)\bOmega\b" "Omega" rA
+\Omega
+endsnippet
+
+# --- lambda / Lambda
+context "math()"
+snippet "(?<!\\)\blambda\b" "lambda" rA
+\lambda
+endsnippet
+
+context "math()"
+snippet "(?<!\\)\bLambda\b" "Lambda" rA
+\Lambda
+endsnippet
+
+# --- eta (PRIORITY 10)
+priority 10
+context "math()"
+snippet "(?<!\\)\betaeta\b" "eta" rA
+\eta
+endsnippet
+priority 0
+
+# --- theta (PRIORITY 100)
+priority 100
+context "math()"
+snippet "(?<!\\)\btheta\b" "theta" rA
+\theta
+endsnippet
+priority 0
+
+# --- gamma / Gamma
+context "math()"
+snippet "(?<!\\)\bgamma\b" "gamma" rA
+\gamma
+endsnippet
+
+context "math()"
+snippet "(?<!\\)\bGamma\b" "Gamma" rA
+\Gamma
+endsnippet
+
+# --- beta (PRIORITY 100)
+priority 100
+context "math()"
+snippet "(?<!\\)\bbeta\b" "beta" rA
+\beta
+endsnippet
+priority 0
+
+# --- chi
+context "math()"
+snippet "(?<!\\)\bchi\b" "chi" rA
+\chi
+endsnippet
+
+context "math()"
+snippet "(?<!\\)\bpsi\b" "psi" rA
+\psi
+endsnippet
+
+
+# conjuntos notables
+
+snippet NN "n" iA
+\mathbb{N}
+endsnippet
+
+context "math()"
+snippet QQ "racionales" iA
+\mathbb{Q}
+endsnippet
+
+context "math()"
+snippet ZZ "enteros" iA
+\mathbb{Z}
+endsnippet
+
+context "math()"
+snippet RR "reales" iA
+\mathbb{R}
+endsnippet
+
+context "math()"
+snippet CC "complejos" iA
+\mathbb{C}
+endsnippet
+
+snippet mbb "mathb" i
+\mathbb{$1}$0
+endsnippet
+
+context "math()"
+snippet PP "partes de" iA
+\mathcal{P}($1)$0
+endsnippet
+

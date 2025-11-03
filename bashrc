@@ -128,3 +128,8 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # Created by `pipx` on 2025-05-14 17:35:32
 export PATH="$PATH:/home/daniel/.local/bin"
+
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m'
+fi

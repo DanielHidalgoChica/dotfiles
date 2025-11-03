@@ -1,0 +1,375 @@
+global !p
+def math():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+endglobal
+
+# triple de hoare
+# context "math()"
+# snippet H "triple de Hoare" i
+# \\{$1\\}\ $2\ \\{$3\\}$0
+# endsnippet
+
+# INFERENCIA ESTADISTICA
+context "math()"
+snippet indep "indep sobre =" i
+\stackrel{\text{indep.}}{=}
+endsnippet
+
+context "math()"
+snippet id "id. d. sobre =" i
+\stackrel{\text{id. d.}}{=}
+endsnippet
+
+# simbolos
+context "math()"
+snippet -> "flecha dcha" iA
+\rightarrow
+endsnippet
+
+context "math()"
+snippet \sub "subconjunto" i
+\subseteq $0
+endsnippet
+
+context "math()"
+snippet <- "flecha izqda" iA
+\leftarrow
+endsnippet
+
+priority 10
+context "math()"
+snippet <-> "doble flecha" iA
+\leftrightarrow
+endsnippet
+
+context "math()"
+snippet ~> "flecha de probabilidad" iA
+\rightsquigarrow
+endsnippet
+
+context "math()"
+snippet ¬ "negacion" iA
+\lnot
+endsnippet
+
+context "math()"
+snippet |= "implica" iA
+\vDash
+endsnippet
+
+context "math()"
+snippet |- "implica en demostracion" iA
+\vdash
+endsnippet
+
+
+priority 10
+context "math()"
+snippet lr "<=>" i
+\Longleftrightarrow $0
+endsnippet
+
+priority 10
+context "math()"
+snippet lrl "<=>" i
+\leftrightarrow $0
+endsnippet
+
+context "math()"
+snippet => "=>" i
+\Longrightarrow $0
+endsnippet
+
+context "math()"
+snippet <= "<=" i
+\Longleftarrow $0
+endsnippet
+
+context "math()"
+snippet ff "para todo" iA
+\forall $0
+endsnippet
+
+context "math()"
+snippet ee "para todo" iA
+\exists $0
+endsnippet
+
+context "math()"
+snippet ii "pertenece" iA
+\in $0
+endsnippet
+
+context "math()"
+snippet ttt "texttt" iA
+\texttt{${1:${VISUAL}}}$0
+endsnippet
+
+
+# más
+context "math()"
+snippet c "mult" i
+\cdot $0
+endsnippet
+
+context "math()"
+snippet _ "under" i
+_{${1:${VISUAL}}}
+endsnippet
+
+context "math()"
+snippet ^ "over" i
+^{${1:${VISUAL}}}
+endsnippet
+
+context "math()"
+snippet O "parentesis" i
+(${1:${VISUAL}})$0
+endsnippet
+
+context "math()"
+snippet C "conjunto" i
+\\{${1:${VISUAL}}\\}$0
+endsnippet
+
+context "math()"
+snippet )() "intervalo abierto" i
+\\left]${1:${VISUAL}}\\right[$0
+endsnippet
+
+context "math()"
+snippet \q "espacio" i
+\quad $0
+endsnippet
+
+context "math()"
+snippet \qq "espacio" iA
+\qquad $0
+endsnippet
+
+# potencias
+context "math()"
+snippet x2 "cuadrado" iA
+x^2
+endsnippet
+
+context "math()"
+snippet x3 "cubo" iA
+x^3
+endsnippet
+
+context "math()"
+snippet x4 "cubo" iA
+x^4
+endsnippet
+
+context "math()"
+snippet x5 "cubo" iA
+x^5
+endsnippet
+
+context "math()"
+snippet x6 "cubo" iA
+x^6
+endsnippet
+
+context "math()"
+snippet x7 "cubo" iA
+x^7
+endsnippet
+
+# funciones
+context "math()"
+snippet can "tachar" i
+\cancel{${1:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet scan "tachar2" i
+\scancel{${1:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet txt "texto" iA
+\text{${1:${VISUAL}}}$0
+endsnippet
+
+# letras
+context "math()"
+snippet delta "delta" iA
+\delta
+endsnippet
+
+context "math()"
+snippet sigma "sigma" iA
+\sigma
+endsnippet
+
+context "math()"
+snippet epsilon "epsilon" i
+\varepsilon
+endsnippet
+
+context "math()"
+snippet partial "partial" iA
+\partial $0
+endsnippet
+
+context "math()"
+snippet alpha "alpha" iA
+\alpha
+endsnippet
+
+context "math()"
+snippet gamma "gamma" iA
+\gamma
+endsnippet
+
+context "math()"
+snippet Gamma "Gamma" iA
+\Gamma
+endsnippet
+
+context "math()"
+snippet beta "beta" iA
+\beta
+endsnippet
+
+context "math()"
+snippet Omega "omega" iA
+\Omega
+endsnippet
+
+
+# espacios
+context "math()"
+snippet \N "naturales" iA
+\mathbb{N}
+endsnippet
+
+context "math()"
+snippet \Q "racionales" iA
+\mathbb{Q}
+endsnippet
+
+context "math()"
+snippet \Z "enteros" iA
+\mathbb{Z}
+endsnippet
+
+context "math()"
+snippet \R "reales" iA
+\mathbb{R}
+endsnippet
+
+context "math()"
+snippet \C "complejos" iA
+\mathbb{C}
+endsnippet
+
+context "math()"
+snippet \P "partes de" i
+\mathcal{P}($1)$0
+endsnippet
+
+context "math()"
+snippet \K "Cuerpo genérico" i
+\mathcal{K}$0
+endsnippet
+
+context "math()"
+snippet \A "Familia" i
+\mathcal{A}$0
+endsnippet
+
+context "math()"
+snippet vacio "conjunto vacio" iA
+\emptyset $0
+endsnippet
+
+# compuestas
+context "math()"
+snippet sd "elevar" iA
+{(${1:${VISUAL}})}^{$2}$0
+endsnippet
+
+context "math()"
+snippet sq "raiz" iA
+\sqrt{${1:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet s[] "raiz p-esima" i
+\sqrt[${1:3}]{${2:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet df "dfrac" iA
+\dfrac{${1:${VISUAL}}}{$2}$0
+endsnippet
+
+priority 10
+context "math()"
+snippet fr "frac" i
+\frac{${1:${VISUAL}}}{$2}$0
+endsnippet
+
+context "math()"
+snippet nice "nice" i
+\nicefrac{${1:${VISUAL}}}{$2}$0
+endsnippet
+
+context "math()"
+snippet pres "Para poner sup/sub indices delante" iA
+\prescript{$1}{$2}{${3:${VISUAL}}}$0
+endsnippet
+
+
+# sumatorias
+context "math()"
+snippet sum "sumatoria" i
+\sum_{$1}^{$2}${3:${VISUAL}}$0
+endsnippet
+
+context "math()"
+snippet suminf "sumatoria infinito" i
+\sum_{n=1}^{\infty}${1:${VISUAL}}$0
+endsnippet
+
+context "math()"
+snippet sumn "sumatoria n" i
+\sum_{k=1}^{n}${1:${VISUAL}}$0
+endsnippet
+
+# productorio
+context "math()"
+snippet prod "sumatoria" i
+\prod_{$1}^{$2}${3:${VISUAL}}$0
+endsnippet
+
+# integrales
+context "math()"
+snippet int "integral" i
+\int_{$1}^{$2} ${4:${VISUAL}}~d${3:t} $0
+endsnippet
+
+context "math()"
+snippet intinf "integral infinito" i
+\int_{-\infty}^{\infty} ${1:${VISUAL}}~dx $0
+endsnippet
+
+context "math()"
+snippet intd "integral indefinida" i
+\int ${2:${VISUAL}}~d${1:t} $0
+endsnippet
+
+# limites
+context "math()"
+snippet lim "limite" i
+\lim_{${1:x}\to${2:\infty}}$3 = $0
+endsnippet
+
+context "math()"
+snippet angle "angulos" iA
+\langle $1 \rangle $0
+endsnippet

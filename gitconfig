@@ -17,3 +17,5 @@
 	tool = vimdiff
 [mergetool]
 	keepBackup = false
+[difftool]
+	prompt = false

@@ -1,6 +1,11 @@
 shopt -s expand_aliases
 
 alias uni='cd /home/daniel/Daniel/University/DGIIM/IV'
+alias platex='cd /home/daniel/Daniel/University/Recursos/Latex/practice'
+alias ig='cd /home/daniel/Daniel/University/DGIIM/IV/IG/practicas/practicas'
+alias ddsi='cd /home/daniel/Daniel/University/DGIIM/IV/DDSI/practicas'
+alias alg='cd /home/daniel/Daniel/University/DGIIM/IV/ALG_III'
+alias topo='cd /home/daniel/Daniel/University/DGIIM/IV/TOPO_II'
 
 # Vainas swapping keys
 alias sc='setxkbmap -option ctrl:swapcaps'

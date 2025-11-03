@@ -21,6 +21,12 @@ indent_style = tab
 indent_size  = tab
 tab_width    = 8
 
+
+[*.tex]
+indent_style = tab
+indent_size  = tab
+tab_width    = 4
+
 [*.yml]
 indent_style = space
 indent_size  = 2

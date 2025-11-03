@@ -1,0 +1,296 @@
+snippet beg "begin{} / end{}" bA
+\begin{$1}
+	${2:${VISUAL}}
+\end{$1}
+endsnippet
+
+# Secciones
+snippet se "section" b
+\section{${1:${VISUAL}}}
+endsnippet
+
+snippet sse "subsection" b
+\subsection{${1:${VISUAL}}}
+endsnippet
+
+snippet ssse "subsubsection" b
+\subsubsection{${1:${VISUAL}}}
+endsnippet
+
+# Listas
+snippet it "itemize" b
+\begin{itemize}
+	\item ${1:${VISUAL}}
+	\item $2
+\end{itemize}
+endsnippet
+
+snippet en "enumerate" b
+\begin{enumerate}
+	\item ${1:${VISUAL}}
+	\item $2
+\end{enumerate}
+endsnippet
+
+snippet i "itemize element" i
+
+\item ${1:${VISUAL}}
+endsnippet
+
+snippet enl "enumerate modificado como (a)" b
+\begin{enumerate}[label=(\alph*)]
+	\item ${1:${VISUAL}}
+	\item $2
+\end{enumerate}
+endsnippet
+
+snippet de "description" b
+\begin{description}
+	\item [$1] ${2:${VISUAL}}
+	\item [$3] $4
+\end{description}
+endsnippet
+
+snippet id "item descrition" i
+
+\item [$1] ${2:${VISUAL}}
+endsnippet
+
+# entornos de mates
+snippet eq "equation" b
+\begin{equation*}
+	${1:${VISUAL}}
+\end{equation*}
+endsnippet
+
+priority 10
+snippet al "align" b
+\begin{align*}
+	${1:${VISUAL}}
+\end{align*}
+endsnippet
+
+snippet ga "gather" b
+\begin{gather*}
+	${1:${VISUAL}}
+\end{gather*}
+endsnippet
+
+snippet ej "ejercicio" b
+\begin{ejercicio}
+	${1:${VISUAL}}
+\end{ejercicio}
+endsnippet
+
+snippet ejm "ejemplo" b
+\begin{ejemplo}
+	${1:${VISUAL}}
+\end{ejemplo}
+endsnippet
+
+# tablas
+snippet tab "tabla" b
+\begin{table}
+\centering
+\begin{tabular}{$1}
+	${4:${VISUAL}}
+\end{tabular}
+\caption{${2:Pie de tabla}}
+\label{${3:etiqueta}}
+\end{table}
+endsnippet
+
+priority 10
+snippet arr "array"
+\begin{array}{$1}
+	${2:${VISUAL}}
+\end{array}
+endsnippet
+
+priority 10
+snippet arrp "array"
+\left\\{\begin{array}{$1}
+	${2:${VISUAL}}
+\end{array}\right.
+endsnippet
+
+priority 10
+snippet arrr "funcion definida a trozos"
+\left\\{\begin{array}{ll}
+	$1 & \\text{si\\ } $2 \\\\
+	$3 & \\text{si\\ } $4
+\end{array}\right. $0
+endsnippet
+
+priority 10
+snippet arrq "array al reves"
+\left.\begin{array}{$1}
+	${2:${VISUAL}}
+\end{array}\right\\}
+endsnippet
+
+snippet ma "matriz" 
+\left(\begin{array}{cccc}
+	 &  & \cdots & \\\\
+	 &  & \cdots & \\\\
+	\\vdots & \\vdots & \\ddots & \\vdots \\\\
+	 &  & \cdots & 
+\end{array}\right)
+endsnippet
+
+priority 10
+snippet mat "matriz" 
+\left(\begin{array}{cccc}
+	${2:${VISUAL}}
+\end{array}\right)
+endsnippet
+
+# Entornos raros
+snippet pascal "codigo en pascal" b
+\begin{minted}[escapeinside=\#\#]{pascal}
+	${1:${VISUAL}}
+\end{minted}
+endsnippet
+
+snippet be "Procedimiento SCD" b
+begin
+   ${1:${VISUAL}}
+end
+endsnippet
+
+snippet minted "minted" b
+\begin{minted}{${1:c++}}
+	${2:${VISUAL}}
+\end{minted}
+endsnippet
+
+snippet multicols "multicols" b
+\setlength{\columnsep}{${1:x}cm}
+\begin{multicols}{${2:n}}
+	${3:${VISUAL}}
+\end{multicols}
+endsnippet
+
+# snippet minted "minted" b
+# \begin{listing}${1:[H]}
+# \begin{minted}[xleftmargin=${2:1}cm${3:, linenos}]{${4:c++}}
+# ${0:${VISUAL}}
+# \end{minted}
+# \caption{${5:Pie de foto}}
+# \label{${6:etiqueta}}
+# \end{listing}
+# endsnippet
+
+snippet teo "teorema/def" b
+\begin{$1}[$2]
+	${0:${VISUAL}}
+\end{$1}
+endsnippet
+
+snippet img "imagen" b
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{${1:path}}
+	\caption{${2:Pie de foto.}}
+	\label{${3:fig_lbel}}
+\end{figure}
+endsnippet
+
+snippet grafo "grafo" bA
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node/.style={circle, draw, minimum size=1cm},
+					edge/.style={-stealth}]
+	\node[node] (A) {A};
+	\node[node, below=of A] (B) {B};
+	\node[node, left=of B] (C) {C};
+	$0
+	\draw[edge] (A) -- (B);
+	\draw[edge] (B) -- (C);
+\end{tikzpicture}
+\caption{${1:Pie de foto}}
+\label{${2:etiqueta}}
+\end{figure}
+endsnippet
+
+
+
+
+
+
+
+
+# Matrices ------------------------------
+snippet 2m1 "matriz 2x1" i
+\left(\begin{array}{cc}
+	$1 \\\\
+	$2 
+\end{array}\right)
+endsnippet
+
+snippet 2m2 "matriz 2x2" i
+\left(\begin{array}{cc}
+	$1 & $2 \\\\
+	$3 & $4 
+\end{array}\right)
+endsnippet
+
+#
+
+snippet 3m1 "matriz 3x1" i
+\left(\begin{array}{ccc}
+	$1 \\\\
+	$2 \\\\
+	$3 
+\end{array}\right)
+endsnippet
+
+snippet 3m2 "matriz 3x2" i
+\left(\begin{array}{ccc}
+	$1 & $2 \\\\
+	$3 & $4 \\\\
+	$5 & $6  
+\end{array}\right)
+endsnippet
+
+snippet 1m3 "matriz 1x3" i
+\left(\begin{array}{ccc}
+	$1 & $2 & $3 
+\end{array}\right)
+endsnippet
+
+snippet 2m3 "matriz 2x3" i
+\left(\begin{array}{ccc}
+	$1 & $2 & $3 \\\\
+	$4 & $5 & $6
+\end{array}\right)
+endsnippet
+
+snippet 3m3 "matriz 3x3" i
+\left(\begin{array}{ccc}
+	$1 & $2 & $3 \\\\
+	$4 & $5 & $6 \\\\
+	$7 & $8 & $9
+\end{array}\right)
+endsnippet
+
+#
+
+snippet 4m4 "matriz 4x4" i
+\left(\begin{array}{cccc}
+	$1 & $2 & $3 & $4 \\\\
+	$5 & $6 & $7 & $8 \\\\
+	$9 & $10 & $11 & $12 \\\\
+	$13 & $14 & $15 & $16 
+\end{array}\right)
+endsnippet
+
+snippet 5m5 "matriz 5x5" i
+\left(\begin{array}{ccccc}
+	$1 & $2 & $3 & $4 & $5 \\\\
+	$6 & $7 & $8 & $9 & $10 \\\\
+	$11 & $12 & $13 & $14 & $15 \\\\
+	$16 & $17 & $18 & $19 & $20 \\\\
+	$21 & $22 & $23 & $24 & $25
+\end{array}\right)
+endsnippet

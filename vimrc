@@ -77,7 +77,7 @@ endfunction
 
 "Poner como leaderkey la coma
 let mapleader = ","
-map <leader>p :call TogglePaste()<cr>
+map <leader>a :call TogglePaste()<cr>
 "Fin paste toggle
 
 "Map key to delete every swap file (puede haber
@@ -98,6 +98,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo' "Lo de las macros
 Plug 'SirVer/ultisnips' "Snippets
 Plug 'lervag/vimtex' " Pal latexx
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 
 "Colores, esquema en .vim/colors
@@ -105,6 +107,11 @@ set termguicolors
 colorscheme true-monochrome
 
 
+"Ctrl-f para tirar de fuzzysearch
+" y leader f para tirar de búsqueda en archivo
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <Leader>f :Rg<CR>
 
 " Use <C-K> to clear the highlighting of :set hlsearch.
 if maparg('<C-K>', 'n') ==# ''
@@ -125,6 +132,7 @@ Plug 'sirver/ultisnips'
     let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
     let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
+nnoremap <silent> <leader>u :w<bar>call UltiSnips#RefreshSnippets()<CR>
 
 Plug 'lervag/vimtex', {'tag': 'v1.6'}
 
