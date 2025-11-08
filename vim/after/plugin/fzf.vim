@@ -4,4 +4,3 @@ let maplocalleader = ','
 nnoremap <silent> <localleader>b :Buffers<CR>
 nnoremap <silent> <C-f> :Files<CR>
 nnoremap <silent> <localleader>f :Rg<CR>
-
