@@ -92,12 +92,6 @@ map <leader>a :call TogglePaste()<cr>
 "con -name en otro caso, creo)
 map <leader>sw :!find . -type f -maxdepth 1 -name '.%.sw[ponmlkjihgfedcba]'  -delete
 
-"Configuraciones para el visualizador de pdf con latex
-if empty(v:servername) && exists('*remote_startserver')
-    call remote_startserver('VIM')
-endif
-
-
 call plug#begin()
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo' "Lo de las macros
