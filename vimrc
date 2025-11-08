@@ -143,6 +143,3 @@ Plug 'KeitaNakamura/tex-conceal.vim'
     let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
     let g:tex_conceal_frac=1
 
-"setlocal spell
-"set spelllang=es,en_us
-"inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
