@@ -108,18 +108,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'KeitaNakamura/tex-conceal.vim'
 call plug#end()
 
-
-
-"Ctrl-f para tirar de fuzzysearch
-" y leader f para tirar de búsqueda en archivo
-nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <C-f> :Files<CR>
-nnoremap <silent> <Leader>f :Rg<CR>
-
 " Use <C-K> to clear the highlighting of :set hlsearch.
 if maparg('<C-K>', 'n') ==# ''
   nnoremap <silent> <C-K> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-K>
 endif
+
 
 "Config de netrw
 let g:netrw_liststyle= 3 " Que el estilo del árbol sea natural, creo
