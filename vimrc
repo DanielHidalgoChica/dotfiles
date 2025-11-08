@@ -103,8 +103,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-peekaboo' "Lo de las macros
 Plug 'SirVer/ultisnips' "Snippets
 Plug 'lervag/vimtex' " Pal latexx
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'KeitaNakamura/tex-conceal.vim'
 call plug#end()
 
 
@@ -136,12 +137,4 @@ Plug 'sirver/ultisnips'
 
 nnoremap <silent> <leader>u :w<bar>call UltiSnips#RefreshSnippets()<CR>
 
-Plug 'lervag/vimtex', {'tag': 'v1.6'}
-
-Plug 'KeitaNakamura/tex-conceal.vim'
-    set conceallevel=1
-    let g:tex_conceal='abdmg'
-    let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
-    let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
-    let g:tex_conceal_frac=1
 
