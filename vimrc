@@ -33,6 +33,10 @@ syntax on
 "El autoindent me gusta la verdad
 set autoindent
 
+"Colores, esquema en .vim/colors
+set termguicolors
+
+colorscheme true-monochrome
 "Uso medio estándar del grep con ripgrep
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
@@ -43,12 +47,12 @@ set tabstop=8
 set softtabstop=0
 set shiftwidth=0
 set noexpandtab
+"
 
 "Para que los archivos sin extensión tengan softtabstop 4
 " EL ROLLO: Todos los archivos sin extensión (texto normal) tabs de 8
 " y softtabstop de 4. De entrada, los archivos CON extensión, softtabstop y
-" shiftwidth de 8. Luego para cosas concretas, metemos editorconfig. Además,
-" los Makefiles intento EditorConfig
+" shiftwidth de 8. Luego para cosas concretas, metemos editorconfig.
 augroup NoExtSTS
 	autocmd!
 	autocmd BufRead,BufNewFile * if empty(expand('%:e')) | setlocal softtabstop=4 | endif
@@ -64,6 +68,9 @@ filetype plugin on
 "Editorconfig para config de estilo especifica de proyectos
 packadd! editorconfig
 
+"Poner como leaderkey la coma
+let mapleader = ","
+
 "Pal paste toggle
 function! TogglePaste()
     if(&paste == 0)
@@ -74,11 +81,9 @@ function! TogglePaste()
         echo "Paste Mode Disabled"
     endif
 endfunction
-
-"Poner como leaderkey la coma
-let mapleader = ","
 map <leader>a :call TogglePaste()<cr>
 "Fin paste toggle
+
 
 "Map key to delete every swap file (puede haber
 "swap files con otras extensiones, pero espero no acumular tantos)
@@ -102,9 +107,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 
-"Colores, esquema en .vim/colors
-set termguicolors
-colorscheme true-monochrome
 
 
 "Ctrl-f para tirar de fuzzysearch
