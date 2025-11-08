@@ -128,13 +128,5 @@ let g:netrw_banner = 0 " Que no aparezca la ayuda
 "Para que funcionen los aliases
 let $BASH_ENV = "~/.bash_aliases"
 
-"Configuración para Latex basada en Castell
-Plug 'sirver/ultisnips'
-    let g:UltiSnipsExpandTrigger = '<tab>'
-    let g:UltiSnipsJumpForwardTrigger = '<tab>'
-    let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-    let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
-
-nnoremap <silent> <leader>u :w<bar>call UltiSnips#RefreshSnippets()<CR>
 
 
