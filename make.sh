@@ -36,10 +36,3 @@ for file in $files; do
 	echo "Creating symlink to $file in home directory."
 	ln -s $dir/$file ~/.$file
 done
-
-
-# Specific one for i3 config
-#i3config_folder=~/.config/i3
-#i3config_file=config
-#
-#ln -s $dir/$i3config_file $i3config_folder
