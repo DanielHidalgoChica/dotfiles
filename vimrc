@@ -1,51 +1,22 @@
 set encoding=utf-8
-set number "Que salgan los números en las líneas
-set rnu "Relative numbering
-set nocompatible "Evita la compatibilidad con Vi y te quita de problemas
+runtime defaults.vim
 
-set hidden "Para cambiar de buffer sin guardar
-set mouse=a "Poder gestionar tamaños de ventanas con ratón
+colo habamax
+set aw nu rnu nowrap "Autowrite number relativenumber nowrap
+set noet sr ts=8 sts=0 sw=0
 
-"Mostrar la statusline con el flename
-set laststatus=2
-
-"Mapeo de jk a la tecla Esc en modo insertar
 inoremap jk <ESC>
 
-"Para copiar directamente al final de la línea
-noremap Y y$
-
+"---------------------------- PERSONALES
 "Para navegar mejor las softwrapped
 noremap j gj
 noremap k gk
 
-"Case insensitive al menos que haya alguna con mayúsucla
-set ignorecase
-set smartcase
-
-"Permitir sintaxis
-syntax on
-
-"El autoindent me gusta la verdad
 set autoindent
 
-"Colores, esquema en .vim/colors
-set termguicolors
-
-colorscheme true-monochrome
-"Uso medio estándar del grep con ripgrep
+"Búsqueda en archivos basada en learn vim github
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
-" Tamaño en espacios del caracter de tab (opciones
-" recomendadas en vim para tabstop, y
-" softabstop=shiftwidth=num_espacios_por_tab)
-set tabstop=8
-set softtabstop=0
-set shiftwidth=0
-set noexpandtab
-"
-
-"Para que los archivos sin extensión tengan softtabstop 4
 " EL ROLLO: Todos los archivos sin extensión (texto normal) tabs de 8
 " y softtabstop de 4. De entrada, los archivos CON extensión, softtabstop y
 " shiftwidth de 8. Luego para cosas concretas, metemos editorconfig.
@@ -54,14 +25,6 @@ augroup NoExtSTS
 	autocmd BufRead,BufNewFile * if empty(expand('%:e')) | setlocal softtabstop=4 | endif
 augroup END
 
-
-filetype on
-filetype indent on "Para que reconozca el tipo
-		   "de archivo y ajuste en función
-		   "de eso
-filetype plugin on
-
-"Editorconfig para config de estilo especifica de proyectos
 packadd! editorconfig
 
 "Poner como leaderkey la coma
@@ -77,7 +40,7 @@ function! TogglePaste()
         echo "Paste Mode Disabled"
     endif
 endfunction
-map <leader>a :call TogglePaste()<cr>
+nnoremap <leader>a :call TogglePaste()<cr>
 "Fin paste toggle
 
 
@@ -86,11 +49,9 @@ map <leader>a :call TogglePaste()<cr>
 "RECUERDA que para usar este comando tienes que haber entrado al archivo
 "desde el directorio en el que se encuentra (porque el filename % no va bien
 "con -name en otro caso, creo)
-map <leader>sw :!find . -type f -maxdepth 1 -name '.%.sw[ponmlkjihgfedcba]'  -delete
+nnoremap <leader>sw :!find . -type f -maxdepth 1 -name '.%.sw[ponmlkjihgfedcba]'  -delete
 
 call plug#begin()
-Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/vim-peekaboo' "Lo de las macros
 Plug 'SirVer/ultisnips' "Snippets
 Plug 'lervag/vimtex' " Pal latexx
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

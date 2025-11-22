@@ -1,7 +1,10 @@
 set encoding=utf-8
 runtime defaults.vim
+
 set aw nu rnu nowrap "Autowrite number relativenumber nowrap
-set et sr sts=-1 sw=4 "Usa espacios, aproxima <
+set noet sr ts=8 sts=0 sw=0 "Usa espacios, aproxima <
+
+colo habamax
 
 inoremap jk <ESC>
 
