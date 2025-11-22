@@ -4,12 +4,8 @@ set rnu "Relative numbering
 set nocompatible "Evita la compatibilidad con Vi y te quita de problemas
 
 set hidden "Para cambiar de buffer sin guardar
-set hlsearch "Para que highlightee los resultados de las búsquedas
 set mouse=a "Poder gestionar tamaños de ventanas con ratón
 
-"Mostrar el comando que se está insertando abajo a la izquierda
-"en la pantalla
-set showcmd
 "Mostrar la statusline con el flename
 set laststatus=2
 
@@ -101,12 +97,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'KeitaNakamura/tex-conceal.vim'
 call plug#end()
-
-" Use <C-K> to clear the highlighting of :set hlsearch.
-if maparg('<C-K>', 'n') ==# ''
-  nnoremap <silent> <C-K> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-K>
-endif
-
 
 "Config de netrw
 let g:netrw_liststyle= 3 " Que el estilo del árbol sea natural, creo
