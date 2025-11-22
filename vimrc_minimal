@@ -6,5 +6,6 @@ set noet sr ts=8 sts=0 sw=0 "Usa espacios, aproxima <
 
 colo habamax
 
+set pt=<C-K>
 inoremap jk <ESC>
 

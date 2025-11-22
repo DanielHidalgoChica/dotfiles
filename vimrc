@@ -6,6 +6,7 @@ set aw nu rnu nowrap "Autowrite number relativenumber nowrap
 set noet sr ts=8 sts=0 sw=0
 
 inoremap jk <ESC>
+set pt=<C-K>
 
 "---------------------------- PERSONALES
 "Para navegar mejor las softwrapped
@@ -29,19 +30,6 @@ packadd! editorconfig
 
 "Poner como leaderkey la coma
 let mapleader = ","
-
-"Pal paste toggle
-function! TogglePaste()
-    if(&paste == 0)
-        set paste
-        echo "Paste Mode Enabled"
-    else
-        set nopaste
-        echo "Paste Mode Disabled"
-    endif
-endfunction
-nnoremap <leader>a :call TogglePaste()<cr>
-"Fin paste toggle
 
 
 "Map key to delete every swap file (puede haber
