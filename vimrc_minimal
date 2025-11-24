@@ -7,5 +7,7 @@ set noet sr ts=8 sts=0 sw=0
 colo habamax
 
 set pt=<C-K>
+
 inoremap jk <ESC>
+nnoremap <F7> :make CXXFLAGS="-std=c++11 -Wall -Wextra" %:r<CR>
 
