@@ -2,7 +2,7 @@ set encoding=utf-8
 runtime defaults.vim
 
 colo habamax
-set aw nu rnu nowrap "Autowrite number relativenumber nowrap
+set aw nu rnu "nowrap "Autowrite number relativenumber nowrap
 set noet sr ts=8 sts=0 sw=0
 
 inoremap jk <ESC>
