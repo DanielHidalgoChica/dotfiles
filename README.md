@@ -5,6 +5,7 @@ Personal configuration files for my development environment.
 ![Shell](https://img.shields.io/badge/Shell-Bash-green)
 ![Editor](https://img.shields.io/badge/Editor-Vim-brightgreen)
 ![WM](https://img.shields.io/badge/WM-i3-blue)
+![License](MIT)
 
 ## Contents
 
@@ -72,7 +73,3 @@ Managed via [vim-plug](https://github.com/junegunn/vim-plug):
 - **[auto-pairs](https://github.com/jiangmiao/auto-pairs)** - Auto-close brackets/quotes
 - **[vim-peekaboo](https://github.com/junegunn/vim-peekaboo)** - Register preview
 - **[tex-conceal.vim](https://github.com/KeitaNakamura/tex-conceal.vim)** - Pretty LaTeX symbols
-
-## License
-
-MIT License - feel free to use and modify as you see fit.
