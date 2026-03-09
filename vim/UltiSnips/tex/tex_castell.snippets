@@ -337,7 +337,7 @@ snippet rij "mrij" i
 endsnippet
 
 snippet <= "leq" iA
-\le $0
+\leq $0
 endsnippet
 
 snippet >= "geq" iA
@@ -361,9 +361,7 @@ endsnippet
 
 context "math()"
 snippet ynn "yn" iA
-y_{n}
-endsnippet
-
+y_{n} endsnippet
 
 context "math()"
 snippet xii "xi" iA
@@ -505,9 +503,6 @@ snippet << "<<" iA
 endsnippet
 
 
-snippet ~~ "~" iA
-\sim
-endsnippet
 
 context "math()"
 snippet set "set" wA
@@ -578,10 +573,6 @@ snippet case "cases" wA
 \begin{cases}
 	$1
 \end{cases}
-endsnippet
-
-snippet SI "SI" iA
-\SI{$1}{$2}
 endsnippet
 
 snippet bigfun "Big function" iA
@@ -796,6 +787,11 @@ snippet QQ "racionales" iA
 endsnippet
 
 context "math()"
+snippet FF "cuerpo" iA
+\mathbb{F}
+endsnippet
+
+context "math()"
 snippet ZZ "enteros" iA
 \mathbb{Z}
 endsnippet
@@ -819,3 +815,10 @@ snippet PP "partes de" iA
 \mathcal{P}($1)$0
 endsnippet
 
+snippet \bf "negrita" i
+\textbf{${1:${VISUAL}}} $0
+endsnippet
+
+snippet \it "cursiva" i
+\textit{${1:${VISUAL}}} $0
+endsnippet
