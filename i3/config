@@ -251,21 +251,41 @@ bindsym $mod+Shift+p exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && maim --format png > 
 for_window [class="^.*"] border pixel 3 # quitar titulos de ventanas
 
 
+# Miscellaneous
+# toggle wifi
+bindsym --release $mod+Shift+w exec --no-startup-id sh -c 'nmcli -t -f WIFI g | grep -qx enabled && nmcli radio wifi off || nmcli radio wifi on'
+
+#scratch pad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 
 # Para que se me abran las cosas que quiero en cada terminal al abrir una sesión
 # pero que puedan abrirse en otros workspaces
 
 exec i3-msg "workspace $ws8; exec firefox;\
-                             workspace $ws10; exec i3-sensible-terminal -e bash -c \
-                            'vim TODO && bash';\
-			     exec thunderbird;\
+                             workspace $ws10; exec firefox;\
+                             workspace $ws11; exec thunderbird;\
                              workspace $ws1; exec i3-sensible-terminal;"
 
 # Comandos que quiero que se ejecuten siempre al empezar la sesión
 # (exec_always) si quiero que se ponga siempre que refresco
 
+# Fondo de pantalla
 exec feh --bg-scale ~/Daniel/Personal/images/cnt_ait.jpeg
+
+# Audio
 exec pulseaudio --start
+
+# Tapping en el touchpad
 exec_always xinput set-prop "ELAN071A:00 04F3:30FD Touchpad" "libinput Tapping Enabled" 1
+
+# Natural scrolling
+
+# Pal mouse-wheel no natural
+exec_always --no-startup-id sh -c 'ID=$(xinput list --id-only "YICHIP Wireless Device Mouse"); if [ ! -z "$ID" ]; then xinput set-prop "$ID" "libinput Natural Scrolling Enabled" 0; fi'
+
+# Pal touchpad sí natural
+exec_always --no-startup-id sh -c 'ID=$(xinput list --id-only "ELAN071A:00 04F3:30FD Touchpad"); if [ ! -z "$ID" ]; then xinput set-prop "$ID" "libinput Natural Scrolling Enabled" 1; fi'
+
 
