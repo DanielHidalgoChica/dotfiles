@@ -1,8 +1,8 @@
 shopt -s expand_aliases
 
-alias uni='cd /home/daniel/Daniel/University/DGIIM/IV'
+alias uni='cd /home/daniel/Daniel/University/DGIIM/IV/segundo_cuatrimestre'
 alias platex='cd /home/daniel/Daniel/University/Recursos/Latex/practice'
-alias ig='cd /home/daniel/Daniel/University/DGIIM/IV/IG/practicas/practicas'
+alias ig='cd /home/daniel/Daniel/University/DGIIM/IV/IG/teoria'
 alias ddsi='cd /home/daniel/Daniel/University/DGIIM/IV/DDSI/practicas'
 alias alg='cd /home/daniel/Daniel/University/DGIIM/IV/ALG_III'
 alias topo='cd /home/daniel/Daniel/University/DGIIM/IV/TOPO_II'
@@ -20,3 +20,7 @@ alias lls='ls'
 
 # Comodidad SO
 alias lsblk="lsblk -o NAME,MAJ:MIN,RM,SIZE,RO,TYPE,MOUNTPOINTS,FSTYPE,LABEL"
+
+# Miscellaneous
+alias python="python3"
+
