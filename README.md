@@ -5,7 +5,7 @@ Personal configuration files for my development environment.
 ![Shell](https://img.shields.io/badge/Shell-Bash-green)
 ![Editor](https://img.shields.io/badge/Editor-Vim-brightgreen)
 ![WM](https://img.shields.io/badge/WM-i3-blue)
-![License](MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Contents
 
