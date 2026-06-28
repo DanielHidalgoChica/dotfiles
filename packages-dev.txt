@@ -11,3 +11,4 @@ texlive-latex-extra
 texlive-fonts-recommended
 latexmk
 zathura
+xdotool

@@ -5,8 +5,9 @@ Migrar un entorno de trabajo personalizado (i3wm en Ubuntu) a nuevo hardware. La
 
 ## Estado Actual del Repositorio
 - **Ruta local**: `~/dotfiles`
-- **`make.sh`**: Enlaza archivos de `~/` y directorios XDG en `~/.config/` desde `config/`, con backup en `~/dotfiles_old/`.
+- **`make.sh`**: Enlaza archivos de `~/` y directorios XDG en `~/.config/` desde `config/`, con backup en `~/dotfiles_old/` (idempotente).
 - **`install.sh`**: Bootstrap en máquina nueva — `apt` por capas + `make.sh` + `vim +PlugInstall` (primera vez).
+- **Editor**: Vim únicamente (`vim/`, `vimrc`); nvim y coc purgados.
 - **Estructura XDG versionada**: `config/i3/`, `config/picom/`, `config/gtk-3.0/`, `config/gh/config.yml`.
 - **Dependencias apt**: `packages-base.txt`, `packages-desktop.txt`, `packages-dev.txt`.
 
@@ -29,7 +30,7 @@ git clone <repo> ~/dotfiles && cd ~/dotfiles
 | Dependencias | `create-packages-layers` — `packages-*.txt` | Hecho |
 | Bootstrap | `create-install-sh` — `install.sh` modular | Hecho |
 | Auditoría | `audit-i3-stack` — rofi, dunst, feh, neofetch, gtk-3.0, gh | Hecho |
-| Purgas | `purge-nvim-coc` — eliminar nvim/coc; validar Vim+LaTeX | Pendiente |
+| Purgas | `purge-nvim-coc` — eliminar nvim/coc; validar Vim+LaTeX | Hecho |
 | Apps opcionales | `audit-optional-apps` — spotify, transmission, etc. | Pendiente |
 | Documentación | `update-docs` — README, checklist migración | Pendiente |
 
@@ -46,9 +47,24 @@ git clone <repo> ~/dotfiles && cd ~/dotfiles
 | `rofi` | Defaults apt | Hecho | Sin config XDG; launcher vía flags en `config/i3/config` (`$mod+d`) |
 | `dunst` | Defaults apt | Hecho | Sin config XDG; usa `/etc/xdg/dunst/dunstrc`; arranque vía `dunst.service` (systemd user) |
 | `feh` | Defaults apt | Hecho | Sin config XDG; wallpaper en `exec_always` de `config/i3/config` |
-| `nvim`, `coc` | Purgar | Pendiente | Decisión: Vim únicamente |
+| `nvim`, `coc` | Purgar | Hecho | Config, datos y paquetes eliminados; backup en `~/dotfiles_old/nvim-coc-purge-*` |
 | Apps opcionales | Revisar | Pendiente | spotify, transmission, godot, wireshark, VirtualBox |
 | Perfiles runtime | Ignorar | — | Chrome, Cursor, Code, JetBrains, LibreOffice, pulse |
+
+## Flujo LaTeX (Vim — editor único)
+
+Validado frente al stack nvim/coc previo (nvim tenía lazy.nvim sin plugins; coc sin extensiones).
+
+| Capacidad | Implementación en dotfiles | Dependencia apt |
+|-----------|---------------------------|-----------------|
+| Compilación continua | vimtex + `latexmk` (`build/`, `-shell-escape`) | `latexmk`, texlive-* |
+| Visor PDF + SyncTeX | zathura (`g:vimtex_view_method`) | `zathura` |
+| Snippets | UltiSnips (`vim/UltiSnips/tex/`, `jj_snippets/`) | — (vim-plug) |
+| Símbolos pretty | tex-conceal.vim | — (vim-plug) |
+| Atajos TeX | `,l` compilar SS, `,c` compilar, `,v` forward search | — |
+| Refocus tras view | xdotool en `after/ftplugin/tex/vimtex.vim` | `xdotool` |
+
+Plugins vim-plug en `vimrc`: UltiSnips, vimtex, fzf, tex-conceal.
 
 ## Auditoría stack i3 implícito (resumen)
 
@@ -65,6 +81,7 @@ git clone <repo> ~/dotfiles && cd ~/dotfiles
 - Eliminado symlink roto `~/.i3` → `~/dotfiles/i3`
 - `i3blocks.conf` apunta a `~/.config/i3/i3blocks.conf` (no `~/.i3/`)
 - Scripts i3blocks usan `/usr/share/i3blocks/$BLOCK_NAME` (paquete apt), no clon en `~/.config/i3blocks/`
+- `make.sh` idempotente (evita symlinks recursivos en re-ejecuciones)
 
 ## Próximo Paso Inmediato
-`purge-nvim-coc`: eliminar `~/.config/nvim` y `~/.config/coc` del sistema; confirmar que el flujo LaTeX con Vim (`vimtex`, `latexmk`, `zathura`) cubre las necesidades.
+`audit-optional-apps`: revisar spotify, transmission, godot, wireshark, VirtualBox.
