@@ -1,0 +1,15 @@
+# i3wm desktop stack (Ubuntu/Debian apt)
+i3
+i3blocks
+i3lock
+rofi
+picom
+feh
+dunst
+dex
+network-manager-gnome
+pulseaudio
+pavucontrol
+gnome-terminal
+xss-lock
+neofetch

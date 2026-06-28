@@ -5,17 +5,28 @@ Migrar un entorno de trabajo personalizado (i3wm en Ubuntu) a nuevo hardware. La
 
 ## Estado Actual del Repositorio
 - **Ruta local**: `~/dotfiles`
-- **Archivos rastreados**: Configuraciones de Bash (`bashrc`, `bash_profile`, `bash_aliases`), entorno de Vim extenso y estructurado (enfocado en LaTeX mediante `vimtex`, `ultisnips` y `fzf`), `.xprofile` y configuración base de `i3`.
-- **Script de gestión (`make.sh`)**: Ha sido modificado para diferenciar y procesar archivos de la raíz del usuario (`~/`) y directorios XDG (`~/.config/`), con creación de backups automáticos.
-- **Déficit técnico actual**: El repositorio carece de estructura XDG, no contiene configuraciones de periféricos esenciales (emulador de terminal, compositor `picom`, lanzador `rofi`, demonio de notificaciones) y falta un registro de las dependencias de software.
+- **Script de gestión (`make.sh`)**: Enlaza archivos de `~/` y directorios XDG en `~/.config/` desde `config/`, con backup en `~/dotfiles_old/`.
+- **Estructura XDG**: `config/i3/`, `config/picom/` versionados y enlazados.
+- **Dependencias**: `packages-desktop.txt` (stack i3wm; pendiente `packages-base.txt`, `packages-dev.txt`, `install.sh`).
 
-## Plan de Acción
-1. **Auditoría de entorno (`~/.config`)**: Revisar secuencialmente la estructura de configuración local.
-2. **Evaluación de componentes**:
-   - Detectar paquetes obsoletos (deprecated) o sin uso real.
-      - Identificar solapamientos técnicos (múltiples herramientas resolviendo el mismo problema).
-      3. **Triaje y estructuración**: Para cada componente auditado, tomar una decisión binaria: purgar del sistema o consolidar en `~/dotfiles/config/` (añadiéndolo simultáneamente al script `make.sh` y al futuro archivo `packages.txt`).
-      4. **Cierre**: Consolidar la lista definitiva de dependencias de software del entorno.
+## Triaje de `~/.config` — Registro de decisiones
 
-      ## Próximo Paso Inmediato
-      Procesar la salida del comando `ls -1 ~/.config` proporcionada por el usuario para comenzar la auditoría individualizada de directorios y paquetes.
+| Entrada | Decisión | Estado | Notas |
+|---------|----------|--------|-------|
+| `i3` | Consolidar | Hecho | `~/.config/i3` → `config/i3/`; eliminado `~/.i3` obsoleto |
+| `picom` | Consolidar | Hecho | `~/.config/picom` → `config/picom/` |
+| `i3blocks` | Consolidar parcial | Hecho | Solo `config/i3/i3blocks.conf`; scripts vía paquete apt (`/usr/share/i3blocks/`); clon upstream eliminado |
+| `neofetch` | Consolidar | Pendiente | |
+| `gtk-3.0` | Consolidar | Pendiente | |
+| `gh` | Consolidar | Pendiente | |
+| `nvim`, `coc` | Purgar | Pendiente | Decisión: Vim únicamente |
+| Apps opcionales | Revisar | Pendiente | spotify, transmission, godot, wireshark, VirtualBox |
+| Perfiles runtime | Ignorar | — | Chrome, Cursor, Code, JetBrains, LibreOffice, pulse |
+
+## Deuda técnica resuelta
+- Eliminado symlink roto `~/.i3` → `~/dotfiles/i3`
+- `i3blocks.conf` apunta a `~/.config/i3/i3blocks.conf` (no `~/.i3/`)
+- Scripts i3blocks usan `/usr/share/i3blocks/$BLOCK_NAME` (paquete apt), no clon en `~/.config/i3blocks/`
+
+## Próximo Paso Inmediato
+Auditar stack i3 implícito sin config XDG propia: `rofi`, `dunst`, `feh`, y consolidar `neofetch`, `gtk-3.0`, `gh`.
