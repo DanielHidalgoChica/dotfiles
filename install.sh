@@ -157,6 +157,15 @@ run_make() {
     bash "$DIR/make.sh"
 }
 
+install_neovim_vscode() {
+    if [[ "$INSTALL_DEV" -ne 1 ]]; then
+        return
+    fi
+
+    echo "==> Neovim for vscode-neovim (>= 0.10; apt 0.9.x is insufficient)"
+    bash "$DIR/scripts/install-neovim-vscode.sh"
+}
+
 install_vim_plugins() {
     if [[ "$SKIP_VIM_PLUGINS" -eq 1 ]]; then
         echo "==> skipping vim-plug (PlugInstall)"
@@ -186,6 +195,8 @@ print_checklist() {
   - Wallpaper: feh expects ~/Daniel/Personal/black.jpeg (see config/i3/config)
   - Keyboard layout: xprofile sets setxkbmap options on X login
   - GitHub CLI: run `gh auth login` if not already configured
+  - Neovim IDE: scripts/install-neovim-vscode.sh (>= 0.10); set Cursor
+    vscode-neovim.neovimExecutablePaths.linux to ~/.local/opt/nvim-linux64/bin/nvim
   - LaTeX: apt texlive subset installed; full TeX Live may live under /usr/local/texlive/
   - GPU drivers, fonts, and AppImages are not managed by install.sh
 
@@ -213,6 +224,7 @@ else
 fi
 
 run_make
+install_neovim_vscode
 install_vim_plugins
 print_checklist
 

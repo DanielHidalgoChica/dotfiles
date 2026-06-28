@@ -11,7 +11,7 @@ dir=~/dotfiles
 olddir=~/dotfiles_old
 
 home_files="bashrc bash_profile bash_aliases vimrc vim xprofile gitconfig editorconfig vimrc_minimal"
-config_files="i3 picom gtk-3.0"
+config_files="i3 picom gtk-3.0 nvim"
 config_single_files="gh/config.yml"
 
 resolve_path() {

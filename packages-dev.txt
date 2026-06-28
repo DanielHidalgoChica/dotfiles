@@ -1,5 +1,6 @@
 # Development and editor stack (Ubuntu/Debian apt)
 vim
+# neovim: apt on Ubuntu 24.04 is 0.9.5; vscode-neovim needs >= 0.10 — see scripts/install-neovim-vscode.sh
 ripgrep
 fzf
 gh

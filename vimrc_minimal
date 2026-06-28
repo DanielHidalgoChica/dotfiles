@@ -1,13 +1,19 @@
+" Vimrc para VSCode-Neovim. También para CP (quítense los condicionales g:vscode).
+
 set encoding=utf-8
 runtime defaults.vim
 
 set aw nu rnu nowrap
 set noet sr ts=8 sts=0 sw=0
 
-colo habamax
+if !exists('g:vscode')
+  colo habamax
+endif
 
 set pt=<C-K>
 
 inoremap jk <ESC>
-nnoremap <F7> :make CXXFLAGS="-std=c++11 -Wall -Wextra" %:r<CR>
+if !exists('g:vscode')
+  nnoremap <F7> :make CXXFLAGS="-std=c++11 -Wall -Wextra" %:r<CR>
+endif
 
