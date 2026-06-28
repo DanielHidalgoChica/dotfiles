@@ -1,38 +1,39 @@
 #!/bin/bash
 #########################
 # .make.sh
-# Tis script creates symlinks from the home dir to any
-# desired dotfiles in ~/dotfiles
+# Creates symlinks from the home dir to dotfiles in ~/dotfiles
 #########################
 
+dir=~/dotfiles
+olddir=~/dotfiles_old
 
-# Varibales
+# Archivos que van en la raíz del usuario (~/.archivo)
+home_files="bashrc bash_profile bash_aliases vimrc vim xprofile gitconfig editorconfig vimrc_minimal"
 
+# Directorios que van en ~/.config/ (~/.config/directorio)
+# Añade aquí picom, alacritty, rofi, etc., según los vayas agregando a dotfiles/config/
+config_files="i3 picom"
 
-dir=~/dotfiles          # dotfiles dir
-olddir=~/dotfiles_old   # odl dotfiles backup
+echo "Creando $olddir para backups..."
+mkdir -p "$olddir"
+mkdir -p ~/.config
 
-# List of files to symlink in home
-files="bashrc bash_profile bash_aliases vimrc vim xprofile i3 gitconfig editorconfig vimrc_minimal"
+cd "$dir" || exit
 
-
-# create dotfiles_old in homedir
-
-echo "Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir
-echo "...done"
-
-# change to the dotfiles dir
-echo "Changing to the $dir directory"
-cd $dir
-echo "...done"
-
-# move any existing dotfiles in homedir to dotfiles_old directory
-# then create symlinks
-
-for file in $files; do
-	echo "Moving any existing dotfiles from ~ to $olddir"
-	mv ~/.$file $olddir
-	echo "Creating symlink to $file in home directory."
-	ln -s $dir/$file ~/.$file
+echo "Procesando archivos del HOME..."
+for file in $home_files; do
+    if [ -e ~/.$file ]; then
+        mv ~/.$file "$olddir"/
+    fi
+    ln -sf "$dir/$file" ~/.$file
 done
+
+echo "Procesando archivos de ~/.config..."
+for folder in $config_files; do
+    if [ -e ~/.config/$folder ]; then
+        mv ~/.config/$folder "$olddir"/
+    fi
+    ln -sf "$dir/config/$folder" ~/.config/$folder
+done
+
+echo "Proceso completado."
