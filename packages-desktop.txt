@@ -7,9 +7,17 @@ picom
 feh
 dunst
 dex
+network-manager
 network-manager-gnome
 pulseaudio
 pavucontrol
 gnome-terminal
 xss-lock
 neofetch
+
+# Referenced in config/i3/config and xprofile
+x11-xkb-utils
+brightnessctl
+playerctl
+maim
+xclip

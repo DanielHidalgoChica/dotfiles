@@ -1,0 +1,5 @@
+# Base system tools (Ubuntu/Debian apt)
+# Installed on any machine; no GUI or desktop stack required.
+git
+curl
+build-essential

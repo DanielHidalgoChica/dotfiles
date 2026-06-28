@@ -1,0 +1,13 @@
+# Development and editor stack (Ubuntu/Debian apt)
+vim
+ripgrep
+fzf
+gh
+
+# LaTeX workflow (vimtex + latexmk); use texlive-full for a complete install
+texlive-latex-base
+texlive-latex-recommended
+texlive-latex-extra
+texlive-fonts-recommended
+latexmk
+zathura
