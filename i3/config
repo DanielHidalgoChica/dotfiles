@@ -272,7 +272,7 @@ exec i3-msg "workspace $ws8; exec firefox;\
 # (exec_always) si quiero que se ponga siempre que refresco
 
 # Fondo de pantalla
-exec feh --bg-scale ~/Daniel/Personal/images/cnt_ait.jpeg
+exec_always feh --bg-scale ~/Daniel/Personal/black.jpeg
 
 # Audio
 exec pulseaudio --start
@@ -285,7 +285,12 @@ exec_always xinput set-prop "ELAN071A:00 04F3:30FD Touchpad" "libinput Tapping E
 # Pal mouse-wheel no natural
 exec_always --no-startup-id sh -c 'ID=$(xinput list --id-only "YICHIP Wireless Device Mouse"); if [ ! -z "$ID" ]; then xinput set-prop "$ID" "libinput Natural Scrolling Enabled" 0; fi'
 
+
+
 # Pal touchpad sí natural
 exec_always --no-startup-id sh -c 'ID=$(xinput list --id-only "ELAN071A:00 04F3:30FD Touchpad"); if [ ! -z "$ID" ]; then xinput set-prop "$ID" "libinput Natural Scrolling Enabled" 1; fi'
 
+
+# Pa intentar arreglar el screen tearing
+exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
