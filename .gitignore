@@ -1,3 +1,6 @@
+# gh auth state (tokens); only config.yml is versioned
+config/gh/hosts.yml
+
 /vim/plugged/**
 /vim/view/**
 # Swap
