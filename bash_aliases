@@ -14,7 +14,9 @@ alias lls='ls'
 
 
 # Comodidad SO
-alias lsblk="lsblk -o NAME,MAJ:MIN,RM,SIZE,RO,TYPE,MOUNTPOINTS,FSTYPE,LABEL"
+
+# -e 7 para no mostrar loop
+alias lsblk="lsblk -e 7 -o NAME,MAJ:MIN,RM,SIZE,RO,TYPE,MOUNTPOINTS,FSTYPE,LABEL,PARTTYPENAME"
 
 alias restartpulse="systemctl --user stop pulseaudio.socket pulseaudio.service; \
 killall -9 pulseaudio 2>/dev/null; \
