@@ -280,7 +280,6 @@ Not covered by `install.sh`:
 | Wallpaper | i3 expects `~/Daniel/Personal/black.jpeg` (see `config/i3/config`) |
 | GitHub auth | `gh auth login` — populates `~/.config/gh/hosts.yml` locally |
 | TeX Live full | Apt installs a subset; optional `/usr/local/texlive/` for full install |
-| GPU drivers | NVIDIA / proprietary drivers |
 | Personal paths | Aliases reference `~/Daniel/...`; adjust on new hardware if needed |
 | Restic / B2 | See [Restic backups](#restic-backups); copy `restic.env.example` → `~/.config/restic/restic.env` |
 | Timeshift | `scripts/configure-timeshift.sh` (system `/`, exclude `/home`) |
