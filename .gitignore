@@ -4,6 +4,11 @@ config/gtk-3.0/bookmarks
 # gh auth state (tokens); only config.yml is versioned
 config/gh/hosts.yml
 
+# restic secrets (never commit)
+config/restic/restic.env
+config/restic/password
+
+
 /vim/plugged/**
 /vim/view/**
 # Swap

@@ -1,0 +1,105 @@
+# Restic exclude patterns for: restic backup ~ --exclude-file ~/.config/restic/exclude.txt
+#
+# Syntax: https://restic.readthedocs.io/en/latest/040_backup.html
+# Also use: restic backup ... --exclude-caches
+#
+# Strategy: exclude regenerable runtime, caches, and IDE/browser profiles.
+# KEEP: ~/Daniel, ~/.ssh, ~/.gnupg, dotfiles (minus .git), small system prefs.
+
+# --- Caches and trash ---
+.cache
+.local/share/Trash
+.texlive2023
+
+# --- Large / transient user dirs ---
+Downloads
+dotfiles_old
+
+# --- Snap (reinstallable; ~/snap alone is ~41 GB) ---
+snap
+
+# --- IDEs and editors (reinstall / reconfigure) ---
+.config/Cursor
+.config/Code
+**/.vscode
+**/.vscode/**
+.cursor
+.config/JetBrains
+.local/share/JetBrains
+
+# --- Browsers (profiles and caches) ---
+.config/google-chrome
+.config/chromium
+.config/Electron
+
+# --- Oracle / SQL Developer stack ---
+.sqldeveloper
+.local/opt/sqldeveloper
+.objectdb
+ObjectDB
+objectdb-*.zip
+oradiag_*
+
+# --- Neovim tarball (reinstall via scripts/install-neovim-vscode.sh) ---
+.local/opt/nvim-linux64
+
+# --- Language / package manager caches ---
+.nvm
+.npm
+.local/share/pipx
+.m2/repository
+
+# --- Dotfiles git metadata (source of truth is GitHub) ---
+dotfiles/.git
+
+# --- Build artifacts ---
+**/node_modules
+**/target
+**/__pycache__
+*.py[cod]
+
+# --- Apps en triaje (configs reinstalables; descomenta si conservas la app) ---
+.config/spotify
+.config/transmission
+.config/godot
+.local/share/godot
+.config/wireshark
+.config/VirtualBox
+
+# --- GNOME / desktop runtime (no dotfiles) ---
+.config/libreoffice
+.config/evolution
+.local/share/evolution
+.config/shotwell
+.local/share/shotwell
+.config/totem
+.config/nautilus
+.local/share/nautilus
+.config/eog
+.config/yelp
+.config/gnome-session
+.config/gnome-initial-setup-done
+.config/goa-1.0
+.config/ibus
+.config/dconf
+.config/pulse
+.config/procps
+.config/enchant
+.config/matplotlib
+.config/update-notifier
+.config/xdg-desktop-portal
+.config/cat_installer
+.config/tiling-assistant
+
+# --- Messaging / misc runtime ---
+.local/share/TelegramDesktop
+.local/share/flatpak
+
+# --- Temp / editor swap ---
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+.viminfo
+.old_vimrc
