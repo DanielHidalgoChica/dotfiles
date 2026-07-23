@@ -1,0 +1,13 @@
+[Unit]
+Description=Restic backup of home directory
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# Loads B2 credentials + RESTIC_PASSWORD (chmod 600)
+EnvironmentFile=%h/.config/restic/restic.env
+ExecStart=%h/dotfiles/scripts/restic-backup.sh
+Nice=10
+IOSchedulingClass=idle
+IOSchedulingPriority=7

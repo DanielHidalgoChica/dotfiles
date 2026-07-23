@@ -21,6 +21,8 @@ snap
 # --- IDEs and editors (reinstall / reconfigure) ---
 .config/Cursor
 .config/Code
+**/.vscode
+**/.vscode/**
 .cursor
 .config/JetBrains
 .local/share/JetBrains
